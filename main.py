@@ -6,7 +6,13 @@ from storage import save_to_csv
 def main():
     parser = argparse.ArgumentParser(description="Pogodowy tracker")
     parser.add_argument('--city', '-c', required=True, help='Nazwa miasta')
+    parser.add_argument('--plot', action='store_true', help='Pokaż wykres historii miasta')
     args = parser.parse_args()
+
+    if args.plot:
+        from plot import plot_temperature_history
+        plot_temperature_history(args.city)
+        return
 
     try:
         weather = get_weather(args.city)
