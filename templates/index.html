@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>WeatherTrack</title>
+    <style>
+        body { font-family: Arial; margin: 30px; }
+        input, button { padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>🌤️ WeatherTrack</h1>
+
+    <form method="POST">
+        <input type="text" name="city" placeholder="Wpisz miasto" required>
+        <button type="submit">Szukaj</button>
+    </form>
+
+    {% if weather %}
+        <h2>Pogoda w {{ weather.miasto }}</h2>
+        <ul>
+            <li>Temperatura: {{ weather.temperatura }}°C</li>
+            <li>Opis: {{ weather.opis }}</li>
+            <li>Wilgotność: {{ weather.wilgotność }}%</li>
+            <li>Wiatr: {{ weather.wiatr }} m/s</li>
+        </ul>
+    {% elif error %}
+        <p style="color: red;">Błąd: {{ error }}</p>
+
+    {% endif %}
+</body>
+</html>
