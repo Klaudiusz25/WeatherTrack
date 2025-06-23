@@ -26,7 +26,13 @@
         </ul>
     {% elif error %}
         <p style="color: red;">Błąd: {{ error }}</p>
-
     {% endif %}
+
+    {% if plot_path %}
+    <h3>📈 Wykres temperatury</h3>
+    <img src="{{ plot_path }}" alt="Wykres temperatury" width="600">
+    {% endif %}
+
+
 </body>
 </html>
